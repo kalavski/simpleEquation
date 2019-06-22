@@ -23,9 +23,11 @@ final class OperationSolver {
     private let operationQueue = OperationQueue()
     
     public func solve(_ expression: String) {
-        operationQueue.addOperation {
-            let (result, error) = OperationSolver.solveExpression(expression: expression)
-            self.delegate?.solvedExpression(result, error)
+        if !expression.isEmpty {
+            operationQueue.addOperation {
+                let (result, error) = OperationSolver.solveExpression(expression: expression)
+                self.delegate?.solvedExpression(result, error)
+            }
         }
     }
     
@@ -49,17 +51,17 @@ final class OperationSolver {
         var stack: [String] = []
         var exit: [String] = []
         let expArray = Array(expression)
-        var didDigitLastly = false
+        var wasNumber = false
         for itemElement in expArray {
             let item: String = String(itemElement)
             if digits.contains(item) {
-                if didDigitLastly {
+                if wasNumber {
                     exit[exit.count - 1] += item
                 }
                 else {
                     exit.append(item)
                 }
-                didDigitLastly = true
+                wasNumber = true
             } else if weakFunctions.contains(item) {
                 while stack.last != nil {
                     guard let stackItem = stack.last else { fatalError("Weak function checker -- stack is empty!")}
@@ -75,7 +77,7 @@ final class OperationSolver {
                     }
                 }
                 stack.append(item)
-                didDigitLastly = false
+                wasNumber = false
             } else if strongFunctions.contains(item) {
                 while stack.last != nil {
                     guard let stackItem = stack.last else { fatalError("Strong function checker -- stack is empty!")}
@@ -88,11 +90,11 @@ final class OperationSolver {
                     }
                 }
                 stack.append(item)
-                didDigitLastly = false
+                wasNumber = false
             }
             else if item == "(" {
                 stack.append(item)
-                didDigitLastly = false
+                wasNumber = false
             }
             else if item == ")" {
                 while stack.last != "("  {
@@ -101,7 +103,7 @@ final class OperationSolver {
                     _ = stack.popLast()
                 }
                 _ = stack.popLast()
-                didDigitLastly = false
+                wasNumber = false
             }
         }
         if !stack.isEmpty {
