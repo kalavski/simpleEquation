@@ -9,7 +9,7 @@
 import Foundation
 
 protocol OperationDelegate: class {
-    func solvedExpression(_ score: Int, _ error: Error?)
+    func solvedExpression(_ score: Double, _ error: Error?)
 }
 
 final class OperationSolver {
@@ -29,9 +29,9 @@ final class OperationSolver {
         }
     }
     
-    public static func solveExpression(expression: String) -> (Int, Error?) {
-        var result: Int = 0
-        let newExpression = checkNegativeNumber(expression: expression)
+    public static func solveExpression(expression: String) -> (Double, Error?) {
+        var result: Double = 0
+        let newExpression = addSilentMultiplication(expression: checkNegativeNumber(expression: expression))
         do {
             if try Validator.isValid(expression: newExpression) {
                 result = try evaluateExpression(expression: findOperations(expression: newExpression))
@@ -112,10 +112,10 @@ final class OperationSolver {
         return exit
     }
     
-    private static func evaluateExpression(expression: [String]) throws -> Int {
-        var stack: [Int] = []
+    private static func evaluateExpression(expression: [String]) throws -> Double {
+        var stack: [Double] = []
         for item in expression {
-            if let x = Int(item) {
+            if let x = Double(item) {
                 stack.append(x)
             } else if weakFunctions.contains(item) || strongFunctions.contains(item) {
                 guard let first = stack.popLast(),
@@ -131,7 +131,7 @@ final class OperationSolver {
         return stack.reduce(0, +)
     }
     
-    private static func doOperations(a: Int, b: Int, operation: String) throws -> Int {
+    private static func doOperations(a: Double, b: Double, operation: String) throws -> Double {
         switch operation {
         case "+":
             return b + a
@@ -147,6 +147,35 @@ final class OperationSolver {
         default:
             throw OperationError.unauthorized
         }
+    }
+    
+    private static func addSilentMultiplication(expression: String) -> String {
+        var newExpression: [String.Element] = Array(expression)
+        var indices: [Int] = []
+        
+        for index in 0..<newExpression.count {
+            let item = String(newExpression[index])
+            
+            if !(index - 1 < 0) {
+                let previousItem = String(newExpression[index - 1])
+                if item == "(" && digits.contains(previousItem) {
+                    indices.append(index + indices.count)
+                }
+                else if previousItem == ")" && digits.contains(item) {
+                    indices.append(index + indices.count)
+                }
+                else if previousItem == ")" && item == "(" {
+                    indices.append(index + indices.count)
+                }
+            }
+
+        }
+        
+        for index in indices {
+            newExpression.insert("*", at: index)
+        }
+        
+        return String(newExpression)
     }
     
     private static func checkNegativeNumber(expression: String) -> String {

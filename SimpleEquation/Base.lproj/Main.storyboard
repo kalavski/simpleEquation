@@ -27,7 +27,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter expression" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bBn-G9-jcm">
                                 <rect key="frame" x="20" y="92.5" width="374" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="749-F1-jXY">
@@ -49,7 +49,7 @@
                                 </subviews>
                             </stackView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lzS-cG-JMp">
-                                <rect key="frame" x="20" y="188.5" width="374" height="70.5"/>
+                                <rect key="frame" x="20" y="188.5" width="374" height="30.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aub-3C-z90">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -57,8 +57,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5x-Ul-HRj">
-                                        <rect key="frame" x="0.0" y="20.5" width="374" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5x-Ul-HRj">
+                                        <rect key="frame" x="0.0" y="20.5" width="374" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="wBz-AH-xnY"/>
                                         </constraints>
@@ -72,7 +72,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lzS-cG-JMp" firstAttribute="top" secondItem="749-F1-jXY" secondAttribute="bottom" constant="8" id="4Bz-Iv-GXC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bBn-G9-jcm" secondAttribute="trailing" constant="20" id="4sv-cs-LXC"/>
                             <constraint firstItem="bBn-G9-jcm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AHL-bi-eOc"/>
                             <constraint firstItem="749-F1-jXY" firstAttribute="width" secondItem="bBn-G9-jcm" secondAttribute="width" id="DFM-I9-yFY"/>
                             <constraint firstItem="ah4-YU-79e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="JWM-Oj-2ao"/>

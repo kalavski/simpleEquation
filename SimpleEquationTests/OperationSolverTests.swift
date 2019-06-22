@@ -21,9 +21,10 @@ class OperationSolverTests: XCTestCase {
     }
 
     func testSolveOperation() {
-        let expressions = [("3*(5+7)-15", 21 ), ("+1", 1), ("-(-1)", 1), ("()", 0), ("(-1)-1", -2), ("1+3*(4+2*3)", 31), ("3*(9-2*4+1)-2", 4), ("((2+5)-(3-1))*3+4", 19)]
+        let expressions: [(String, Double)] = [("3*(5+7)-15", 21 ), ("+1", 1), ("-(-1)", 1), ("()", 0), ("(-1)-1", -2), ("1+3*(4+2*3)", 31), ("3*(9-2*4+1)-2", 4), ("((2+5)-(3-1))*3+4", 19), ("(2)3", 6), ("23(-1)", -23), ("20(-1)(-1)(-1)1", -20)]
         
-        expressions.forEach { (expression, result) in
+        expressions.forEach { (arg) in
+            let (expression, result): (String, Double) = arg
             XCTAssertEqual(OperationSolver.solveExpression(expression: expression).0, result, "Score computed is wrong!")
         }
     }

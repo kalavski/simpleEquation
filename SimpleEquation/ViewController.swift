@@ -29,13 +29,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: OperationDelegate {
-    func solvedExpression(_ score: Int, _ error: Error?) {
+    func solvedExpression(_ score: Double, _ error: Error?) {
         if score == 0 && error != nil {
-            guard let error = error,
-                  let operationError = error as? OperationError
-            else {
-                return
-            }
+            guard let operationError = error as? OperationError else { return }
             DispatchQueue.main.async {
                 self.errorLabel.text = operationError.errorDescription!
                 self.scoreLabel.text = ""
