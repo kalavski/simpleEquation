@@ -8,25 +8,41 @@
 
 import Foundation
 
+protocol OperationDelegate: class {
+    func solvedExpression(_ score: Int, _ error: Error?)
+}
+
 final class OperationSolver {
+    
+    weak var delegate: OperationDelegate?
     
     private static let digits: [String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     private static let weakFunctions: [String] = ["+", "-"]
     private static let strongFunctions: [String] = ["/", "*"]
     
-    public static func solveExpression(expression: String) -> String {
-        var result: String = ""
+    private let operationQueue = OperationQueue()
+    
+    public func solve(_ expression: String) {
+        operationQueue.addOperation {
+            let (result, error) = OperationSolver.solveExpression(expression: expression)
+            self.delegate?.solvedExpression(result, error)
+        }
+    }
+    
+    public static func solveExpression(expression: String) -> (Int, Error?) {
+        var result: Int = 0
         let newExpression = checkNegativeNumber(expression: expression)
         do {
-            try checkParenthesis(expression: newExpression)
-            result = String(try evaluateExpression(expression: findOperations(expression: newExpression)))
+            if try Validator.isValid(expression: newExpression) {
+                result = try evaluateExpression(expression: findOperations(expression: newExpression))
+            }
         } catch let error as OperationError {
-            return error.errorDescription!
+            return (0, error)
         } catch {
-            
+            return (0, error)
         }
         
-        return result
+        return (result, nil)
     }
     
     private static func findOperations(expression: String) throws ->  [String] {
@@ -94,27 +110,6 @@ final class OperationSolver {
             }
         }
         return exit
-    }
-    
-    private static func checkParenthesis(expression: String) throws {
-        var left = 0
-        var right = 0
-        var index = 0
-        let expArray = Array(expression)
-        
-        while left >= right && index < expArray.count {
-            if expArray[index] == "(" {
-                left += 1
-            }
-            else if expArray[index] == ")" {
-                right += 1
-            }
-            index += 1
-        }
-        
-        if left != right {
-            throw OperationError.invalidParenthesis
-        }
     }
     
     private static func evaluateExpression(expression: [String]) throws -> Int {

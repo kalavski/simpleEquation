@@ -16,6 +16,7 @@
 		11341EF822BACA4600C3F774 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341EF722BACA4600C3F774 /* OperationError.swift */; };
 		11341F0022BE6B8600C3F774 /* SimpleEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341EFF22BE6B8600C3F774 /* SimpleEquationTests.swift */; };
 		11341F0822BE6B9C00C3F774 /* OperationSolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341F0722BE6B9C00C3F774 /* OperationSolverTests.swift */; };
+		11341F0B22BE7F7E00C3F774 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341F0A22BE7F7E00C3F774 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		11341EFF22BE6B8600C3F774 /* SimpleEquationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEquationTests.swift; sourceTree = "<group>"; };
 		11341F0122BE6B8600C3F774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11341F0722BE6B9C00C3F774 /* OperationSolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationSolverTests.swift; sourceTree = "<group>"; };
+		11341F0A22BE7F7E00C3F774 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				11341EF722BACA4600C3F774 /* OperationError.swift */,
+				11341F0A22BE7F7E00C3F774 /* Validator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			files = (
 				1113AE8D22BABE94008F1B0A /* ViewController.swift in Sources */,
 				1113AE9E22BABFDC008F1B0A /* OperationSolver.swift in Sources */,
+				11341F0B22BE7F7E00C3F774 /* Validator.swift in Sources */,
 				11341EF822BACA4600C3F774 /* OperationError.swift in Sources */,
 				1113AE8B22BABE94008F1B0A /* AppDelegate.swift in Sources */,
 			);

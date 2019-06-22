@@ -13,6 +13,7 @@ enum OperationError: Error {
     case zeroDivisior
     case unauthorized
     case invalidParenthesis
+    case unauthorizeLetter
 }
 
 extension OperationError: LocalizedError {
@@ -25,6 +26,8 @@ extension OperationError: LocalizedError {
             return "Operation is unauthorized!"
         case .invalidParenthesis:
             return "Invalid number of parentheses!"
+        case .unauthorizeLetter:
+            return "Unauthorized letter!"
         }
     }
 }
