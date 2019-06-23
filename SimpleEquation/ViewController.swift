@@ -19,13 +19,58 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         operationSolver.delegate = self
-        enterTextField.delegate = self
     }
     
     @IBAction func doSolve(_ sender: UIButton) {
         guard let expression = enterTextField.text else { return }
         operationSolver.solve(expression)
     }
+    
+    
+    @IBAction func addNumber(_ sender: UIButton) {
+        addLetterToExpression(String(sender.tag))
+    }
+    
+    @IBAction func addParenthesis(_ sender: UIButton) {
+        switch sender.tag {
+        case 15:
+            addLetterToExpression("(")
+        case 16:
+            addLetterToExpression(")")
+        default:
+            return
+        }
+    }
+    
+    
+    @IBAction func addOperation(_ sender: UIButton) {
+        switch sender.tag {
+        case 11:
+            addLetterToExpression("+")
+        case 12:
+            addLetterToExpression("-")
+        case 13:
+            addLetterToExpression("*")
+        case 14:
+            addLetterToExpression("/")
+        default:
+            return
+        }
+    }
+    
+    
+    @IBAction func doClear(_ sender: UIButton) {
+        enterTextField.text = ""
+    }
+    
+    private func addLetterToExpression(_ letter: String) {
+        guard let text = enterTextField.text else {
+            enterTextField.text = letter
+            return
+        }
+        enterTextField.text = text + letter
+    }
+    
 }
 
 extension ViewController: OperationDelegate {
@@ -47,12 +92,5 @@ extension ViewController: OperationDelegate {
                 self.view.layoutIfNeeded()
             }
         }
-    }
-}
-
-extension ViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return string == " " ? false : true
     }
 }

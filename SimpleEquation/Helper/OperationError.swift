@@ -25,7 +25,7 @@ extension OperationError: LocalizedError {
         case .unauthorized:
             return "Operation is unauthorized!"
         case .invalidParenthesis:
-            return "Invalid number of parentheses!"
+            return "Parentheses are not correct!"
         case .unauthorizeLetter:
             return "Unauthorized letter!"
         }

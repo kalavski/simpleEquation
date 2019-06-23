@@ -17,6 +17,7 @@
 		11341F0022BE6B8600C3F774 /* SimpleEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341EFF22BE6B8600C3F774 /* SimpleEquationTests.swift */; };
 		11341F0822BE6B9C00C3F774 /* OperationSolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341F0722BE6B9C00C3F774 /* OperationSolverTests.swift */; };
 		11341F0B22BE7F7E00C3F774 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341F0A22BE7F7E00C3F774 /* Validator.swift */; };
+		11341F0E22BF879900C3F774 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11341F0D22BF879900C3F774 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		11341F0122BE6B8600C3F774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11341F0722BE6B9C00C3F774 /* OperationSolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationSolverTests.swift; sourceTree = "<group>"; };
 		11341F0A22BE7F7E00C3F774 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		11341F0D22BF879900C3F774 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		1113AE8922BABE94008F1B0A /* SimpleEquation */ = {
 			isa = PBXGroup;
 			children = (
+				11341F0C22BF874200C3F774 /* CustomView */,
 				1113AE9F22BACA0A008F1B0A /* Helper */,
 				1113AE9C22BABF89008F1B0A /* Solver */,
 				1113AE8A22BABE94008F1B0A /* AppDelegate.swift */,
@@ -122,6 +125,14 @@
 				11341F0722BE6B9C00C3F774 /* OperationSolverTests.swift */,
 			);
 			path = SimpleEquationTests;
+			sourceTree = "<group>";
+		};
+		11341F0C22BF874200C3F774 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				11341F0D22BF879900C3F774 /* CustomButton.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +238,7 @@
 			files = (
 				1113AE8D22BABE94008F1B0A /* ViewController.swift in Sources */,
 				1113AE9E22BABFDC008F1B0A /* OperationSolver.swift in Sources */,
+				11341F0E22BF879900C3F774 /* CustomButton.swift in Sources */,
 				11341F0B22BE7F7E00C3F774 /* Validator.swift in Sources */,
 				11341EF822BACA4600C3F774 /* OperationError.swift in Sources */,
 				1113AE8B22BABE94008F1B0A /* AppDelegate.swift in Sources */,

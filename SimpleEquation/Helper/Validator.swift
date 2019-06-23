@@ -9,14 +9,11 @@
 import Foundation
 
 class Validator {
-    
-    private static let digits: [String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    private static let weakFunctions: [String] = ["+", "-"]
-    private static let strongFunctions: [String] = ["/", "*"]
+
     private static let parenthesis: [String] = ["(", ")"]
     
     public static func isValid(expression: String) throws -> Bool {
-        return try checkParenthesis(expression: expression) && (try checkLetters(expression: expression))
+        return try checkParenthesis(expression: expression)
     }
     
     private static func checkParenthesis(expression: String) throws -> Bool {
@@ -37,18 +34,6 @@ class Validator {
         
         if left != right {
             throw OperationError.invalidParenthesis
-        }
-        
-        return true
-    }
-    
-    private static func checkLetters(expression: String) throws -> Bool {
-        let expArray = Array(expression)
-        for item in expArray {
-            let itemString = String(item)
-            if !digits.contains(itemString) && !weakFunctions.contains(itemString) && !strongFunctions.contains(itemString) && !parenthesis.contains(itemString) {
-                throw OperationError.unauthorizeLetter
-            }
         }
         
         return true
